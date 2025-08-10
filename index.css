@@ -1,0 +1,248 @@
+/* reset básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-primary: #ff8c00;
+  --color-dark: #1a1a1a;
+  --color-white: #ffffff;
+  --color-light: #f4f4f4;
+  --font-primary: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-secondary: Georgia, 'Times New Roman', serif;
+}
+
+/* garante que nada estoure a largura */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-primary);
+  background: var(--color-light);
+  color: var(--color-dark);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* header / nav */
+header {
+  background: var(--color-dark);
+  color: var(--color-white);
+  position: sticky;
+  top: 0;
+  z-index: 1200;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+.nav-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.9rem 1rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 1.4rem;
+  align-items: center;
+  flex-wrap: wrap; /* quebra no mobile */
+}
+
+nav a {
+  color: var(--color-primary);
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: .25rem .5rem;
+  transition: color .18s ease, transform .12s ease;
+}
+
+nav a:hover {
+  color: #ffd0a3;
+  transform: translateY(-2px);
+}
+
+/* --- HERO --- */
+section#home {
+  padding: 0;
+  margin: 0;
+}
+
+.hero {
+  width: 100%; /* antes era 100vw - agora respeita o tamanho da página */
+  background-image: url("img/pexels-narda-yescas-1566837.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1.25rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* overlay */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.65) 60%);
+  z-index: 1;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: var(--color-white);
+  max-width: 1100px;
+}
+
+.hero-inner h1 {
+  font-family: var(--font-secondary);
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: .6rem;
+  font-size: clamp(2.8rem, 8vw, 5.2rem);
+  text-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+
+.hero-inner p {
+  font-size: clamp(1rem, 2.2vw, 1.4rem);
+  margin-bottom: 1.25rem;
+  color: rgba(255,255,255,0.9);
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* CTA */
+.cta-button {
+  display: inline-block;
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-weight: 800;
+  padding: .8rem 2.2rem;
+  border-radius: 10px;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.28);
+  transition: transform .18s ease, box-shadow .18s ease, background .12s ease;
+}
+
+.cta-button:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 36px rgba(0,0,0,0.32);
+}
+
+/* sections */
+section {
+  padding: 4.5rem 1rem;
+  text-align: center;
+  width: 100%;
+}
+
+h2 {
+  font-family: var(--font-secondary);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  margin-bottom: 1.8rem;
+  color: var(--color-dark);
+}
+
+/* menu */
+.menu-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.6rem;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.menu-list > li {
+  background: var(--color-white);
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 300px;
+  min-width: 220px;
+  max-width: 340px;
+}
+
+.menu-list img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.pizza-content {
+  padding: 1rem;
+}
+
+/* about */
+#about {
+  background: url("img/pexels-eneida-nieves-905847.jpg") center/cover no-repeat;
+  color: var(--color-white);
+  background-attachment: scroll; /* fix removido p/ evitar bug no mobile */
+  padding: 6rem 1rem;
+}
+
+#about h2,
+#about p {
+  color: var(--color-white);
+  text-shadow: 0 4px 18px rgba(0,0,0,0.6);
+}
+
+/* contato */
+address {
+  margin-top: 1rem;
+  font-style: normal;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* footer */
+footer {
+  background: var(--color-dark);
+  color: var(--color-white);
+  padding: 1.25rem;
+  text-align: center;
+}
+
+/* responsividade */
+@media (max-width: 900px) {
+  .hero {
+    padding: 3.25rem 1rem;
+    min-height: 85vh;
+  }
+  .hero-inner h1 {
+    font-size: clamp(2rem, 8vw, 3.5rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-inner p {
+    font-size: 0.95rem;
+  }
+  nav a {
+    font-size: .95rem;
+  }
+}
